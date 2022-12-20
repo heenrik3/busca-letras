@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap')
+
+$mine-shaft: #303030
+$concrete: #F3F3F3
+
+$primary: $mine-shaft
+$secondary: $concrete
+$default-radius: 5px
+$default-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+
+@mixin respond($breakpoint)
+    @if $breakpoint == phone
+        @media only screen and (max-width: 37.5em)
+          @content    //600px
+
+    @if $breakpoint == tab-port
+        @media only screen and (max-width: 56.25em)
+          @content     //900px
+
+    @if $breakpoint == tab-land
+        @media only screen and (max-width: 75em)
+          @content    //1200px
+
+
+@mixin default-border-radius()
+    border-radius: $default-radius
+
+@mixin default-box-shadow()
+    box-shadow: $default-box-shadow
+
+@keyframes rotate 
+    100%
+        transform: rotate(360deg)
+
+
+@keyframes rotation
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+
+.loader 
+    width: 7rem
+    height: 7rem
+    border: 5px solid $primary
+    border-bottom-color: transparent
+    border-radius: 50%
+    display: inline-block
+    box-sizing: border-box
+    animation: rotation 1s linear infinite
+
+    justify-self: center
+    
+*, *:before, *:after
+    margin: 0
+    padding: 0
+    box-sizing: inherit
+
+html
+    font-size: 62.5%
+
+body
+    box-sizing: border-box
+
+button
+    cursor: pointer
+button, input
+    font-family: inherit
+    font-size: inherit
+    font-weight: inherit
+    border: none
+    
+.app
+    min-height: 100vh
+    font-size: 1.6rem
+    font-family: 'Source Sans Pro', sans-serif
+
+    background-color: lighten(lightgray, 10%)
+
+    display: flex
+    flex-direction: column
+    align-items: center
+    // justify-content: center
+
+.main
+    height: 100%
+    width: 100rem
+    margin: 5rem
+
+    display: flex
+    flex-direction: column
+    gap: 5rem
+
+.header
+    padding: 2rem
+    background-color: white
+    @include default-box-shadow
+    @include default-border-radius
+
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 2.5rem
+
+    &__actions
+        width: 100%
+        // display: flex
+        // justify-content: space-between
+        // gap: 2rem
+
+        display: grid
+        grid-template-columns: 1fr 1fr auto
+        gap: 2rem
+
+    &__input
+        display: flex
+        flex-direction: column
+        gap: 1rem
+        flex: 1
+
+        & input
+            padding: 1rem 2rem
+            @include default-border-radius
+            background-color: $secondary
+
+        & .btn
+            height: 100%
+            width: 4rem
+            @include default-border-radius
+
+.lyrics
+    @include default-box-shadow
+    @include default-border-radius
+    background-color: white
+
+    display: flex
+    gap: 2rem
+    flex: 1
+
+    &__pic
+        height: 40rem
+        min-width: 40rem
+        padding: 2rem
+        @include default-border-radius
+        @include default-box-shadow
+        background-color: white
+        transform: translate(-2.5rem, -2.5rem)
+        pointer-events: none
+
+        display: flex
+        align-items: center
+        justify-content: center
+
+    &__img
+        height: 100%
+        width: 100%
+        object-fit: cover
+        @include default-border-radius
+
+    &__info
+        width: 100%
+        margin: 2rem 5rem 2rem 0rem
+
+        display: flex
+        justify-content: center
+        // align-items: center
+        flex-direction: column
+
+    &__title
+        font-size: 3.6rem
+    
+    &__artist
+        font-weight: 600
+        font-size: 2.4rem
+
+    &__text
+        height: 50rem
+        // width: 50rem
+        margin-top: 2rem
+        flex: 1
+        overflow: auto
+    
+    &__data
+        margin-right: 2rem
+        white-space: pre
+        // word-break: break-all
