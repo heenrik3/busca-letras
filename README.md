@@ -18,6 +18,9 @@
 - NodeJS
 - 2 APIs
 
+PS: Não é perfeita, possui algumas inconsistências ao procurar letras de músicas recentes.
+Música mais antigas e conhecidas são mais fáceis de serem encontradas! 😉
+
 [Acesse Aqui](https://busca-letras-nine.vercel.app/)
 
 ![!preview img](https://i.imgur.com/AzzDY90.png)
