@@ -15,7 +15,8 @@ function Artist(props) {
     setError(false)
     setIsLoading(true)
 
-    const url = process.env.REACT_APP_API + `cover?artist=${props.artist}`
+    const url =
+      process.env.REACT_APP_API + `cover?artist=${props.artist} ${props.song}`
 
     axios
       .get(url)
@@ -32,7 +33,7 @@ function Artist(props) {
         setError(true)
         setIsLoading(false)
       })
-  }, [props.artist])
+  }, [props.artist, props.song])
 
   if (isLoading)
     return (
@@ -63,6 +64,7 @@ function Artist(props) {
 function mapStateToProps(state) {
   return {
     artist: state.data.artist,
+    song: state.data.song,
   }
 }
 
