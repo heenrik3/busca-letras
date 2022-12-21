@@ -24,7 +24,7 @@ function Header(props) {
 
   return (
     <header className="header">
-      <h1>Busca-letras📄</h1>
+      <h1 className="header__logo">Busca-letras📄</h1>
 
       <div className="header__actions">
         <div className="header__input">
