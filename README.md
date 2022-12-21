@@ -18,8 +18,9 @@
 - NodeJS
 - 2 APIs
 
-PS: Não é perfeita, possui algumas inconsistências ao procurar letras de músicas recentes.
-Música mais antigas e conhecidas são mais fáceis de serem encontradas! 😉
+PS: Devido a problemas de direitos autorais, há pouquíssimas opções de serviços que entregam as letras de músicas.
+Encontrei um mas tudo indica que ele é antigo e desatualizado, por isso raramente encontra letras de músicas recentes.
+Música conhecidas e mais antigas (2010 para trás +/-) são mais fáceis de serem encontradas! 😉
 
 [Acesse Aqui](https://busca-letras-nine.vercel.app/)
 
