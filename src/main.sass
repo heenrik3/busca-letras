@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap')
 
 $mine-shaft: #303030
 $concrete: #F3F3F3
@@ -28,10 +29,6 @@ $default-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 @mixin default-box-shadow()
     box-shadow: $default-box-shadow
 
-@keyframes rotate 
-    100%
-        transform: rotate(360deg)
-
 
 @keyframes rotation
     0%
@@ -59,28 +56,46 @@ $default-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 html
     font-size: 62.5%
 
+    @include respond(tab-land)
+        font-size: 56.25%
+
+    @include respond(tab-port)
+        font-size: 52%
+
+    @include respond(phone)
+        font-size: 55%
+
 body
     box-sizing: border-box
 
 button
     cursor: pointer
+
 button, input
     font-family: inherit
     font-size: inherit
     font-weight: inherit
-    border: none
+    outline: none
+
+    border: 2px solid transparent
     
 .app
     min-height: 100vh
-    font-size: 1.6rem
+    font-size: 1.8rem
     font-family: 'Source Sans Pro', sans-serif
 
-    background-color: lighten(lightgray, 10%)
+    // background-color: #edc6c6
+    background: linear-gradient(to right, rgba(237, 198, 198, 70%) 10%, $secondary 90%)
 
     display: flex
     flex-direction: column
     align-items: center
-    // justify-content: center
+    justify-content: space-between
+
+    gap: 2rem
+    
+    *, & > *
+        transition: .2s
 
 .main
     height: 100%
@@ -90,6 +105,15 @@ button, input
     display: flex
     flex-direction: column
     gap: 5rem
+
+    @include respond(tab-port)
+        width: 85%
+        gap: 7rem
+        
+    @include respond(phone)
+        width: 95%
+        margin: 1rem
+        
 
 .header
     padding: 2rem
@@ -104,13 +128,17 @@ button, input
 
     &__actions
         width: 100%
-        // display: flex
-        // justify-content: space-between
-        // gap: 2rem
 
         display: grid
         grid-template-columns: 1fr 1fr auto
         gap: 2rem
+
+        @include respond(tab-port)
+            grid-template-columns: 1fr
+            grid-template-rows: auto auto auto
+        
+        @include respond(phone)
+            font-size: 2rem
 
     &__input
         display: flex
@@ -122,11 +150,51 @@ button, input
             padding: 1rem 2rem
             @include default-border-radius
             background-color: $secondary
+            
+            @include respond(phone)
+                width: 100%
+
+            &:focus
+                border-color: $primary
 
         & .btn
             height: 100%
-            width: 4rem
+            width: 10rem
             @include default-border-radius
+            @include default-box-shadow
+            background-color: $primary
+            color: $secondary
+
+            &:active
+                box-shadow: none
+                transform: translateY(3px)
+
+            &:focus
+                border-color: $secondary
+
+            @include respond(tab-port)
+                height: 5rem
+                width: 100%
+
+.footer
+    width: 100%
+    padding: 1rem 0
+    background-color: $primary
+    
+    color: $secondary
+    // font-size: 1.4rem
+
+
+    display: flex
+    align-items: center
+    justify-content: center
+
+    & p
+        span
+            font-family: 'Josefin Sans'
+            font-weight: bold
+            color: $secondary
+            
 
 .lyrics
     @include default-box-shadow
@@ -136,6 +204,11 @@ button, input
     display: flex
     gap: 2rem
     flex: 1
+
+    @include respond(tab-port)
+        flex-direction: column
+        align-items: center
+        gap: 0
 
     &__pic
         height: 40rem
@@ -151,6 +224,15 @@ button, input
         align-items: center
         justify-content: center
 
+        @include respond(tab-port)
+            height: 45rem
+            min-width: 45rem
+            transform: translate(0, -4rem)
+        
+        @include respond(phone)
+            height: 37rem
+            min-width: 37rem
+
     &__img
         height: 100%
         width: 100%
@@ -163,8 +245,13 @@ button, input
 
         display: flex
         justify-content: center
-        // align-items: center
         flex-direction: column
+
+        @include respond(tab-port)
+            margin: 0
+            padding: 2rem
+            align-items: center
+            text-align: center
 
     &__title
         font-size: 3.6rem
@@ -174,13 +261,5 @@ button, input
         font-size: 2.4rem
 
     &__text
-        height: 50rem
-        // width: 50rem
         margin-top: 2rem
-        flex: 1
-        overflow: auto
-    
-    &__data
-        margin-right: 2rem
-        white-space: pre
-        // word-break: break-all
+        white-space: pre-wrap

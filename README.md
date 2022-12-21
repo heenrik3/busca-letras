@@ -23,4 +23,4 @@ Música mais antigas e conhecidas são mais fáceis de serem encontradas! 😉
 
 [Acesse Aqui](https://busca-letras-nine.vercel.app/)
 
-![!preview img](https://i.imgur.com/AzzDY90.png)
+![!preview img](https://i.imgur.com/1HHgooH.png)
