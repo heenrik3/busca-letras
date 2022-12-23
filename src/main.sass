@@ -127,6 +127,14 @@ button, input
     align-items: center
     gap: 2.5rem
 
+    @include respond(tab-port)
+        padding: 1.5rem
+        gap: 2rem
+
+    @include respond(phone)
+        padding: 1rem
+        gap: 1rem
+
     &__logo
         font-family: 'Kalam', cursive
 
@@ -140,9 +148,11 @@ button, input
         @include respond(tab-port)
             grid-template-columns: 1fr
             grid-template-rows: auto auto auto
+            gap: 1.5rem
         
         @include respond(phone)
             font-size: 2rem
+            gap: .5rem
 
     &__input
         display: flex
@@ -186,8 +196,6 @@ button, input
     background-color: $primary
     
     color: $secondary
-    // font-size: 1.4rem
-
 
     display: flex
     align-items: center
