@@ -15,8 +15,8 @@ function Lyrics(props) {
 
   return (
     <div className="lyrics">
-      <Artist cover={data.cover} error={!data} />
-      <SongInfo data={data} error={!data} />
+      <Artist cover={data.cover} error={props.error} />
+      <SongInfo data={data} error={props.error} />
     </div>
   )
 }
