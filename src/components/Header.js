@@ -1,7 +1,7 @@
 import { useRef } from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
-import { search } from '../actions'
+// import { search } from '../actions'
 
 function Header(props) {
   const artistInputRef = useRef()
@@ -51,8 +51,10 @@ function Header(props) {
   )
 }
 
-const mapDispatchToProps = {
-  search,
-}
+export default Header
 
-export default connect(null, mapDispatchToProps)(Header)
+// const mapDispatchToProps = {
+//   search,
+// }
+
+// export default connect(null, mapDispatchToProps)(Header)

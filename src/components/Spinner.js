@@ -1,3 +1,7 @@
 export default function Spinner() {
-  return <span className="loader"></span>
+  return (
+    <div className="spinner">
+      <span className="loader"></span>
+    </div>
+  )
 }

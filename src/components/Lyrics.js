@@ -1,11 +1,22 @@
 import Artist from './Artist'
 import SongInfo from './SongInfo'
+import Spinner from './Spinner'
 
-function Lyrics() {
+function Lyrics(props) {
+  const { data } = props
+
+  if (props.isLoading) {
+    return (
+      <div className="lyrics">
+        <Spinner />
+      </div>
+    )
+  }
+
   return (
     <div className="lyrics">
-      <Artist />
-      <SongInfo />
+      <Artist cover={data.cover} error={!data} />
+      <SongInfo data={data} error={!data} />
     </div>
   )
 }

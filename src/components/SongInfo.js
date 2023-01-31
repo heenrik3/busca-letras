@@ -1,61 +1,7 @@
-// import axios from 'axios'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import Spinner from './Spinner'
-
 function SongInfo(props) {
-  const [isLoading, setIsLoading] = useState(false)
-  const [artist, setArtist] = useState('')
-  const [title, setTitle] = useState('')
-  const [lyrics, setLyrics] = useState('')
-  const [error, setError] = useState(false)
+  const { artist, title, lyrics } = props.data
 
-  useEffect(() => {
-    if (!props.artist || !props.song) return
-
-    setError(false)
-    setIsLoading(true)
-
-    const url =
-      process.env.REACT_APP_API +
-      `lyrics?artist=${props.artist}&song=${props.song}`
-
-    axios
-      .get(url)
-      .then((res) => {
-        if (res.status !== 200) {
-          setError(true)
-          setIsLoading(false)
-
-          return
-        }
-
-        const { artist } = res.data.data
-        const { title } = res.data.data
-        const { lyrics } = res.data.data
-
-        setArtist(artist)
-        setTitle(title)
-        setLyrics(lyrics)
-
-        setIsLoading(false)
-      })
-      .catch((err) => {
-        setError(true)
-        setIsLoading(false)
-      })
-  }, [props.artist, props.song])
-
-  if (isLoading) {
-    return (
-      <div className="lyrics__info">
-        <Spinner />
-      </div>
-    )
-  }
-
-  if (error) {
+  if (props.error) {
     return (
       <div className="lyrics__info">
         <h1>Letra não encontrada 😮‍💨</h1>
@@ -63,7 +9,7 @@ function SongInfo(props) {
     )
   }
 
-  if (title === '') {
+  if (!title) {
     return (
       <div className="lyrics__info">
         <h2>Comece buscando uma letra de música! 😁</h2>
@@ -83,11 +29,14 @@ function SongInfo(props) {
   )
 }
 
-function mapStateToProps(state) {
-  return {
-    artist: state.data.artist,
-    song: state.data.song,
-  }
-}
+export default SongInfo
 
-export default connect(mapStateToProps)(SongInfo)
+// function mapStateToProps(state) {
+//   return {
+//     artist: state.data.artist,
+//     song: state.data.song,
+//     cover: state.data.cover,
+//   }
+// }
+
+// export default connect(mapStateToProps)(SongInfo)
